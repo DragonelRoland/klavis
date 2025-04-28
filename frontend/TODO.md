@@ -13,9 +13,10 @@
 ## UI/UX Parity Tasks
 
 - [x] Match sidebar styling, icons, and navigation to original
-- [ ] Match header styling, LLM model selector, and "New Chat" button
-- [ ] Implement chat interface (message list, input, model selector)
-- [ ] Implement MCP Panel (search, server cards, toggles, details)
+- [x] Match header styling, LLM model selector, and "New Chat" button
+- [x] Implement chat interface (message list, input, model selector)
+- [x] Implement MCP Panel (server cards, search, toggles, details UI)
+- [x] Add server details modal with tools list
 - [ ] Add user profile section and authentication UI
 - [ ] Add responsive design and mobile navigation
 - [ ] Add API Keys, Profile, and Billing pages
@@ -25,10 +26,17 @@
 ## Playground Functionality
 
 - [ ] Connect chat interface to backend API
-- [ ] Connect MCP Panel to backend API
-- [ ] Implement server card toggles and details modal
+- [ ] Connect MCP Panel to backend API (toggle, details, status)
+- [x] Implement server card toggles and details modal (UI done, backend next)
 - [ ] Implement YouTube transcript extraction UI
 - [ ] Implement tool call feedback and status indicators
+
+## Architecture & Code Quality
+
+- [x] Properly mark client components with 'use client' directive
+- [ ] Create a global state management system for API connections
+- [ ] Add type definitions for all components and data structures
+- [ ] Implement error handling and loading states
 
 ## Polish & QA
 
