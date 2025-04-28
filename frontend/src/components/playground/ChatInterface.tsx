@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send } from 'lucide-react';
+import { Send, ChevronDown } from 'lucide-react';
 
 type Message = {
   id: string;
@@ -20,7 +20,7 @@ export function ChatInterface() {
     },
   ]);
   const [input, setInput] = useState('');
-  const [selectedModel, setSelectedModel] = useState('GPT-4');
+  const [selectedModel, setSelectedModel] = useState('GPT 4o');
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -56,59 +56,66 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col rounded-lg border border-gray-200 bg-white h-full min-h-[500px]">
-      <div className="border-b border-gray-200 p-4 flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Chat Interface</h2>
-        <select 
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm"
-          value={selectedModel}
-          onChange={(e) => setSelectedModel(e.target.value)}
-        >
-          <option>GPT-4</option>
-          <option>GPT-3.5</option>
-          <option>Claude</option>
-        </select>
+    <div className="flex flex-col h-full">
+      {/* Title and model selector */}
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xl font-bold">Playground</h3>
+        <div className="flex items-center gap-4">
+          <span className="text-sm text-gray-500">LLM Model</span>
+          <button className="flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm">
+            {selectedModel} <ChevronDown size={16} />
+          </button>
+        </div>
       </div>
       
-      <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-4">
-        {messages.map((message) => (
-          <div 
-            key={message.id} 
-            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
+      {/* Chat container */}
+      <div className="flex-1 flex flex-col rounded-lg border border-gray-200 bg-white overflow-hidden">
+        {/* Messages area */}
+        <div className="flex-1 p-6 overflow-y-auto flex flex-col gap-4">
+          {messages.map((message) => (
             <div 
-              className={`max-w-3/4 rounded-lg p-3 ${
-                message.role === 'user' 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-gray-100 text-gray-800'
-              }`}
+              key={message.id} 
+              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <div className="text-sm">{message.content}</div>
-              <div className="text-xs mt-1 opacity-70">
-                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              <div 
+                className={`max-w-[75%] rounded-lg p-3 ${
+                  message.role === 'user' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-gray-100 text-gray-800'
+                }`}
+              >
+                <div className="text-sm whitespace-pre-wrap">{message.content}</div>
+                <div className="text-xs mt-1 opacity-70">
+                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+        
+        {/* Input area */}
+        <div className="p-4 border-t border-gray-200">
+          <div className="flex items-end gap-2">
+            <textarea
+              className="flex-1 rounded-md border border-gray-300 p-3 resize-none"
+              placeholder="Type your message..."
+              rows={3}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button 
+              className={`rounded-md p-3 ${
+                input.trim() 
+                  ? 'bg-blue-500 text-white hover:bg-blue-600' 
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              } transition-colors`}
+              onClick={handleSend}
+              disabled={!input.trim()}
+            >
+              <Send size={20} />
+            </button>
           </div>
-        ))}
-      </div>
-      
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex items-end gap-2">
-          <textarea
-            className="flex-1 rounded-md border border-gray-300 p-3 resize-none"
-            placeholder="Type your message..."
-            rows={3}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button 
-            className="rounded-md bg-blue-500 p-3 text-white"
-            onClick={handleSend}
-            disabled={!input.trim()}
-          >
-            <Send size={20} />
-          </button>
         </div>
       </div>
     </div>

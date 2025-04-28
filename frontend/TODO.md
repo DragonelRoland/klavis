@@ -1,21 +1,19 @@
 # Klavis AI Frontend Implementation TODO
 
-## High-Level Tasks
+## Immediate Priorities
 
-- [x] Set up Next.js project with TypeScript and Tailwind CSS
-- [x] Install shadcn/ui and configure theme tokens
-- [x] Create basic layout components (Sidebar, Header, Layout)
-- [x] Create Home and Playground pages
-- [x] Set up theme configuration and Tailwind integration
-- [x] Install required dependencies
-- [x] Push initial implementation to remote
+- [ ] Fix layout to match original site (header, colors, spacing)
+- [ ] Redesign chat bubbles to match original styling
+- [ ] Fix MCP panel cards to match original layout
+- [ ] Create actual API client for chat functionality
+- [ ] Implement MCP server connections and tool calling
 
 ## UI/UX Parity Tasks
 
 - [x] Match sidebar styling, icons, and navigation to original
-- [x] Match header styling, LLM model selector, and "New Chat" button
-- [x] Implement chat interface (message list, input, model selector)
-- [x] Implement MCP Panel (server cards, search, toggles, details UI)
+- [✓] Match header styling, LLM model selector, and "New Chat" button (needs improvement)
+- [✓] Implement chat interface (message list, input, model selector) (needs refining)
+- [✓] Implement MCP Panel (server cards, search, toggles, details UI) (needs refining)
 - [x] Add server details modal with tools list
 - [ ] Add user profile section and authentication UI
 - [ ] Add responsive design and mobile navigation
@@ -23,13 +21,13 @@
 - [ ] Add loading, error, and empty states
 - [ ] Add theme switcher (light/dark mode)
 
-## Playground Functionality
+## API Connection Tasks
 
-- [ ] Connect chat interface to backend API
-- [ ] Connect MCP Panel to backend API (toggle, details, status)
-- [x] Implement server card toggles and details modal (UI done, backend next)
-- [ ] Implement YouTube transcript extraction UI
-- [ ] Implement tool call feedback and status indicators
+- [ ] Create API client for chat functionality
+- [ ] Implement authentication and API key management
+- [ ] Connect to MCP servers for tool calls
+- [ ] Implement SSE streaming for chat responses
+- [ ] Add proper error handling for API calls
 
 ## Architecture & Code Quality
 
@@ -50,6 +48,9 @@
 
 **Legend:**
 - [x] = Done
+- [✓] = Partially done, needs refinement
 - [ ] = To Do
 
-Update this file as you complete each step. 
+The highest priorities are fixing the UI to match the original site and implementing API connections to make the chat and tools functional.
+
+If you can help by providing HTML/CSS from the original site, that would be extremely helpful. 
