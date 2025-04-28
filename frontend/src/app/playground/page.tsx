@@ -1,41 +1,25 @@
+import { ChatInterface } from '@/components/playground/ChatInterface';
+import { MCPPanel } from '@/components/playground/MCPPanel';
+
 export default function Playground() {
   return (
-    <div className="grid h-[calc(100vh-8rem)] grid-cols-1 gap-6 lg:grid-cols-2">
-      <div className="flex flex-col rounded-lg border border-gray-200 bg-white p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Chat Interface</h2>
-          <select className="rounded-md border border-gray-300 px-3 py-2 text-sm">
-            <option>GPT-4</option>
-            <option>GPT-3.5</option>
-            <option>Claude</option>
-          </select>
+    <div className="flex h-[calc(100vh-4rem)] gap-6 px-8 py-8 bg-[#F7F8FA]">
+      <div className="flex-1 flex flex-col">
+        <div className="mb-4">
+          <span className="text-xs text-gray-400 font-semibold uppercase">Playground</span>
         </div>
-        <div className="flex-1 space-y-4 overflow-y-auto">
-          {/* Message list will go here */}
-        </div>
-        <div className="mt-4">
-          <textarea
-            className="w-full rounded-md border border-gray-300 p-3"
-            placeholder="Type your message..."
-            rows={3}
-          />
-          <button className="mt-2 w-full rounded-md bg-primary-500 px-4 py-2 text-white hover:bg-primary-600">
-            Send Message
-          </button>
-        </div>
+        <ChatInterface />
       </div>
-      <div className="flex flex-col rounded-lg border border-gray-200 bg-white p-6">
+      <div className="w-[420px] flex flex-col">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">MCP Panel</h2>
+          <span className="text-xs text-gray-400 font-semibold uppercase">Your MCP Panel</span>
           <input
             type="text"
             placeholder="Search servers..."
-            className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-md border border-gray-300 px-3 py-2 text-sm w-48"
           />
         </div>
-        <div className="flex-1 overflow-y-auto">
-          {/* Server list will go here */}
-        </div>
+        <MCPPanel />
       </div>
     </div>
   );
